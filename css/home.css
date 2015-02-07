@@ -53,20 +53,7 @@ thead{
 .ratings {
     padding-right: 10px;
     padding-left: 10px;
-    color: #d17581;
-}
-
-.slide-image {
-    width: 100%;
-}
-
-.carousel-holder {
-    margin-bottom: 30px;
-}
-
-.carousel-control,
-.item {
-    border-radius: 4px;
+    color: #b4741c;
 }
 
 .shadow{

@@ -1,0 +1,41 @@
+﻿<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <p class="lead">Specs</p>
+            <div class="list-group">
+                <a href="#" ng-repeat="spec in item.item.specs" class="list-group-item">
+                    <i ng-repeat="(key, value) in spec"><strong>{{key | capitalize}}</strong>: {{value}}</i>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="thumbnail">
+                <img class="img-responsive" ng-src="{{item.item.images[0]}}" alt="{{item.item.name}}">
+                <div class="caption-full">
+                    <h4 class="pull-right">{{item.item.starting_bid | currency:"&euro;"}}</h4>
+                    <h4>{{item.item.name}}</h4>
+                    <p>{{item.item.description}}</p>
+                </div>
+                <div class="ratings">
+                    <br />
+                    <p class="pull-right">{{item.seller.reviews.length}} reviews</p>
+                    <seller-avg-rating max="5" reviews="item.seller.reviews"></seller-avg-rating>
+                </div>
+            </div>
+            <div class="well shadow">
+                <p class="lead"><span class="fa fa-comments"></span> Reviews</p>
+                <div class="row" ng-repeat="review in item.seller.reviews | orderBy:'-stars'">
+                    <div class="col-md-12">
+                        <blockquote style="font-size:1em;">
+                            <h4><i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;{{review.author}}</h4>
+                            <seller-rating score="review.rating" max="5"></seller-rating>
+                            <span class="pull-right">{{review.createdOn | date:'medium'}}</span>
+                            <p><i class="fa fa-quote-left"></i>&nbsp;&nbsp;&nbsp;{{review.body}}&nbsp;&nbsp;&nbsp;<i class="fa fa-quote-right"></i></p>
+                        </blockquote>
+                    </div>
+                    <hr />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

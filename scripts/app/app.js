@@ -15,6 +15,11 @@ app.config(function ($routeProvider) {
         templateUrl: '/views/home.html',
         controller: 'MainCtrl'
     })
+    .when('/item/:itemId',
+    {
+        templateUrl: '/views/item.html',
+        controller: 'MainCtrl'
+    })
     .otherwise({ redirectTo: '/home' });
 });
 
@@ -35,5 +40,14 @@ app.controller('MainCtrl', ['$scope', '$location', '$routeParams', 'FireBaseServ
 
     $scope.isActive = function (viewLocation) {
         return $location.path().indexOf(viewLocation) >= 0;
+    };
+
+    if ($routeParams.itemId != null) {
+        $scope.item = {};
+        angular.forEach($scope.items, function (value, index) {
+            if (value.$id == $routeParams.itemId) {
+                $scope.item = value;
+            }
+        });
     };
 }]);

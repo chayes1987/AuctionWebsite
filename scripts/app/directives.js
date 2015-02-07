@@ -53,3 +53,47 @@ app.directive('sellerAvgRating', function () {
         }
     };
 });
+
+app.directive('sellerRating', function () {
+    return {
+        restrict: 'E',
+        scope: {
+            score: '=score',
+            max: '=max'
+        },
+        templateUrl: 'templates/seller-rating.html',
+        link: function (scope, elements, attr) {
+            scope.updateStars = function () {
+                var i = 0;
+                scope.stars = [];
+                for (i = 0; i < scope.max; i += 1) {
+                    scope.stars.push({
+                        full: scope.score > i
+                    });
+                }
+            };
+
+            scope.starClass = function (star, i) {
+                var starClass = 'glyphicon-star-empty';
+                if (star.full || i <= scope.hoverIdx) {
+                    starClass = 'glyphicon-star';
+                }
+                return starClass;
+            };
+
+            scope.$watch('score', function (newValue, oldValue) {
+                if (newValue !== null && newValue !== undefined) {
+                    scope.updateStars();
+                }
+            });
+        }
+    };
+});
+
+app.filter('capitalize', function () {
+    return function (input, scope) {
+        if (input != null)
+            input = input.toLowerCase();
+        return input.substring(0, 1).toUpperCase() + input.substring(1);
+    }
+});
