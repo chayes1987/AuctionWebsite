@@ -20,6 +20,11 @@ app.config(function ($routeProvider) {
         templateUrl: '/views/item.html',
         controller: 'MainCtrl'
     })
+    .when('/login',
+    {
+        templateUrl: '/views/login.html',
+        controller: 'LoginCtrl'
+    })
     .otherwise({ redirectTo: '/home' });
 });
 
@@ -48,6 +53,49 @@ app.controller('MainCtrl', ['$scope', '$location', '$routeParams', 'FireBaseServ
             if (value.$id == $routeParams.itemId) {
                 $scope.item = value;
             }
+        });
+    };
+}]);
+
+app.controller('LoginCtrl', ['$scope', '$firebaseSimpleLogin', 'FIREBASE_DB', '$rootScope', function ($scope, $firebaseSimpleLogin, FIREBASE_DB, $rootScope) {
+    $scope.errors = [];
+    // Login
+    $scope.login = function () {
+        $scope.errors = [];
+
+        if ($scope.userEmail === undefined) {
+            $scope.errors.push('Enter Your Email');
+            return;
+        };
+
+        if ($scope.userPassword === undefined) {
+            $scope.errors.push('Enter Your Password');
+            return;
+        };
+
+        if ($scope.errors.length > 0) {
+            return;
+        };
+
+        // Login
+        $firebaseSimpleLogin(new Firebase(FIREBASE_DB)).$login('password', {
+            email: $scope.userEmail,
+            password: $scope.userPassword,
+            rememberMe: $scope.rememberMe
+        }).then(function (user) {
+            // Success
+            $rootScope.user = user;
+            window.location.href = '#home';
+        }, function (error) {
+            // Check Error Code
+            if (error.code === 'INVALID_USER') {
+                $scope.errors.push('The Email is invalid');
+                return;
+            };
+            if (error.code === 'INVALID_PASSWORD') {
+                $scope.errors.push('The Password is invalid');
+                return;
+            };
         });
     };
 }]);
