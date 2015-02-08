@@ -4,6 +4,7 @@
     'ngAnimate',
     'firebase',
     'ui.bootstrap',
+    'angularUtils.directives.dirPagination',
 ]);
 
 app.constant('FIREBASE_DB', 'https://auctionapp.firebaseio.com/');
@@ -30,6 +31,16 @@ app.config(function ($routeProvider) {
         template: '<h2>Logging Off...</h2>',
         controller: 'LogoutCtrl'
     })
+    .when('/auctionlist',
+    {
+        templateUrl: '/views/auctions-list.html',
+        controller: 'MainCtrl'
+    })
+    .when('/auctioncard',
+    {
+        templateUrl: '/views/auctions-card.html',
+        controller: 'MainCtrl'
+    })
     .otherwise({ redirectTo: '/home' });
 });
 
@@ -37,12 +48,18 @@ app.factory('FireBaseService', ['$firebase', 'FIREBASE_DB', function ($firebase,
     var factory = {};
     factory.items = $firebase(new Firebase(FIREBASE_DB + "items"));
     factory.auctions = $firebase(new Firebase(FIREBASE_DB + "auctions/1"));
+    factory.categories = $firebase(new Firebase(FIREBASE_DB + "categories"));
+
     return factory;
 }]);
 
 app.controller('MainCtrl', ['$scope', '$location', '$routeParams', 'FireBaseService', '$rootScope', function ($scope, $location, $routeParams, FireBaseService, $rootScope) {
     $scope.items = FireBaseService.items;
+    $scope.categories = FireBaseService.categories;
     $scope.loading = true;
+
+    $scope.currentPage = 1;
+    $scope.pageSize = 10;
 
     $scope.$on('repeatFinished', function (ngRepeatFinishedEvent) {
         $scope.loading = false;

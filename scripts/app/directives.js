@@ -97,3 +97,19 @@ app.filter('capitalize', function () {
         return input.substring(0, 1).toUpperCase() + input.substring(1);
     }
 });
+
+app.directive('auctionsNav', function () {
+    return {
+        restrict: 'E',
+        templateUrl: 'templates/auctions-nav.html',
+        controller: 'MainCtrl'
+    };
+});
+
+app.directive('paginationControls', function () {
+    return {
+        restrict: 'E',
+        templateUrl: 'templates/pagination-controls.html',
+        controller: 'MainCtrl'
+    };
+});

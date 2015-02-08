@@ -14,6 +14,7 @@
     <script src="scripts/libs/jquery-2.1.1.js"></script>
     <script src="scripts/libs/angular-ui-bootstrap.js"></script>
     <script src="scripts/libs/bootstrap.js"></script>
+    <script src="scripts/libs/pagination.js"></script>
     <link href="css/animations.css" rel="stylesheet" />
     <link href="css/bootstrap-theme.css" rel="stylesheet" />
     <link href="css/bootstrap.css" rel="stylesheet" />
@@ -35,7 +36,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li ng-class="{ active: isActive('/home')}"><a ng-href="#home"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-                    <li ng-class="{ active: isActive('/itemlist') || isActive('/itemcard') || isActive('/item') }"><a ng-href="#itemcard"><span class="glyphicon glyphicon-th-large"></span> Auctions</a></li>
+                    <li ng-class="{ active: isActive('/auctionlist') || isActive('/auctioncard') }"><a ng-href="#auctioncard"><span class="glyphicon glyphicon-th-large"></span> Auctions</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right" style="padding-right:15px;">
                     <li ng-show="user.email == 'admin@auctions.ie'" ng-class="{ active: isActive('/dashboard') }">

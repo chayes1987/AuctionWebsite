@@ -1,0 +1,37 @@
+﻿<auctions-nav></auctions-nav>
+<pagination-controls></pagination-controls>
+<div class="col-lg-12">
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover table-striped">
+            <tbody>
+                <tr dir-paginate="item in itms = (items | orderByPriority | filter:searchText | filter:category | orderBy:'name') | itemsPerPage: pageSize" current-page="currentPage">
+                    <td>
+                        <a href="#/item/{{item.$id}}">
+                            <img ng-src="{{item.item.images[0]}}" alt="{{item.item.name}}" height="120" width="200" />
+                        </a>
+                    </td>
+                    <td>
+                        <div class="caption">
+                            <h4><a href="#/item/{{item.$id}}">{{item.item.name}}</a></h4>
+                            <p>{{item.item.description | limitTo : 200}}...</p>
+                        </div>
+                        <div class="ratings">
+                            <p class="pull-right">{{item.seller.reviews.length}} reviews</p>
+                            <seller-avg-rating max="5" reviews="item.seller.reviews"></seller-avg-rating>
+                        </div>
+                    </td>
+                    <td><h4>{{item.item.starting_bid | currency:"&euro;"}}</h4></td>
+                    <td class="tdCenter">
+                        <button type="button" class="btn btn-xs btn-success"><span class="glyphicon glyphicon-plus"></span> Register</button>
+                    </td>
+                    <td class="tdCenter">
+                        <a href="#item/{{item.$id}}">
+                            <button type="button" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-search"></span> View</button>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>      
+</div>
+<pagination-controls></pagination-controls>
