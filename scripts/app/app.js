@@ -46,6 +46,11 @@ app.config(function ($routeProvider) {
         templateUrl: 'views/auction.html',
         controller: 'AuctionCtrl'
     })
+    .when('/dashboard',
+    {
+        templateUrl: '/views/dashboard.html',
+        controller: 'DashboardCtrl'
+    })
     .otherwise({ redirectTo: '/home' });
 });
 
