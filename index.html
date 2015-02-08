@@ -44,7 +44,7 @@
                     </li>
                     <li ng-show="user.email === undefined"><a ng-href="#home"><span class="glyphicon glyphicon-pencil"></span> Register</a></li>
                     <li ng-show="user.email === undefined" ng-class="{ active: isActive('/login') }"><a ng-href="#login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                    <li ng-show="user.email !== undefined && user.email !== 'admin@auctions.ie'" ng-class="{ active: isActive('/auction') }"><a ng-href="#/auction"><span class="glyphicon glyphicon-user"></span> {{user.email}}</a></li>
+                    <li ng-show="user.email !== undefined && user.email !== 'admin@auctions.ie'" ng-class="{ active: isActive('/auctions') }"><a ng-href="#/auctions"><span class="glyphicon glyphicon-user"></span> {{user.email}}</a></li>
                     <li ng-show="user.email !== undefined"><a ng-href="#logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
                 </ul>
             </div>

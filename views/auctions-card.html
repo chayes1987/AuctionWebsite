@@ -9,7 +9,7 @@
             <div class="caption">
                 <h4 class="pull-right">{{item.item.starting_bid | currency:"&euro;"}}</h4>
                 <h4><a href="#/item/{{item.$id}}">{{item.item.name}}</a></h4>
-                <p style="font-size:1em;">{{item.item.description | limitTo: 190}}</p>
+                <p style="font-size:1em;">{{item.item.description | limitTo: 190}}...</p>
                 <button type="button" class="btn btn-xs btn-success"><span class="glyphicon glyphicon-plus"></span> Register</button>
                 <a href="#item/{{item.$id}}">
                     <button type="button" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-search"></span> View</button>
