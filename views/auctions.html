@@ -33,7 +33,7 @@
                         <td>
                             <h5>Current Bid: {{auction.current_bid | currency:"&euro;"}}</h5>
                         </td>
-                        <td>
+                        <td ng-show="auction.winner !== ''">
                             <h5>Winner: {{auction.winner}}</h5>
                         </td>
                         <td>
