@@ -25,6 +25,11 @@ app.config(function ($routeProvider) {
         templateUrl: '/views/login.html',
         controller: 'LoginCtrl'
     })
+    .when('/logout',
+    {
+        template: '<h2>Logging Off...</h2>',
+        controller: 'LogoutCtrl'
+    })
     .otherwise({ redirectTo: '/home' });
 });
 
@@ -98,4 +103,10 @@ app.controller('LoginCtrl', ['$scope', '$firebaseSimpleLogin', 'FIREBASE_DB', '$
             };
         });
     };
+}]);
+
+app.controller('LogoutCtrl', ['$firebaseSimpleLogin', 'FIREBASE_DB', '$rootScope', function ($firebaseSimpleLogin, FIREBASE_DB, $rootScope) {
+    $firebaseSimpleLogin(new Firebase(FIREBASE_DB)).$logout();
+    $rootScope.user = undefined;
+    window.location.href = '#home';
 }]);
