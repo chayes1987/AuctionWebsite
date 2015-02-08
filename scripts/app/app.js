@@ -41,6 +41,11 @@ app.config(function ($routeProvider) {
         templateUrl: '/views/auctions-card.html',
         controller: 'MainCtrl'
     })
+    .when('/auction',
+    {
+        templateUrl: 'views/auction.html',
+        controller: 'AuctionCtrl'
+    })
     .otherwise({ redirectTo: '/home' });
 });
 
@@ -49,6 +54,7 @@ app.factory('FireBaseService', ['$firebase', 'FIREBASE_DB', function ($firebase,
     factory.items = $firebase(new Firebase(FIREBASE_DB + "items"));
     factory.auctions = $firebase(new Firebase(FIREBASE_DB + "auctions/1"));
     factory.categories = $firebase(new Firebase(FIREBASE_DB + "categories"));
+    factory.auctions = $firebase(new Firebase(FIREBASE_DB + "auctions/1"));
 
     return factory;
 }]);
@@ -126,4 +132,17 @@ app.controller('LogoutCtrl', ['$firebaseSimpleLogin', 'FIREBASE_DB', '$rootScope
     $firebaseSimpleLogin(new Firebase(FIREBASE_DB)).$logout();
     $rootScope.user = undefined;
     window.location.href = '#home';
+}]);
+
+app.controller('AuctionCtrl', ['$scope', '$location', '$http', 'FireBaseService', '$rootScope', function ($scope, $location, $http, FireBaseService, $rootScope) {
+    $scope.auction = FireBaseService.auctions;
+
+    $scope.placeBid = function () {
+        $http.get('http://127.0.0.1:8080/placebidservice/web/services/placebid/1/' + $rootScope.user.email).
+            success(function () {
+                alert("Bid has been placed!");
+            }).error(function () {
+                alert("Server not available");
+            });
+    }
 }]);
