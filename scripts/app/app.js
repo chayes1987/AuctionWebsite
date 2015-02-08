@@ -31,14 +31,14 @@ app.config(function ($routeProvider) {
         template: '<h2>Logging Off...</h2>',
         controller: 'LogoutCtrl'
     })
-    .when('/auctionlist',
+    .when('/itemslist',
     {
-        templateUrl: '/views/auctions-list.html',
+        templateUrl: '/views/items-list.html',
         controller: 'MainCtrl'
     })
-    .when('/auctioncard',
+    .when('/itemscard',
     {
-        templateUrl: '/views/auctions-card.html',
+        templateUrl: '/views/items-card.html',
         controller: 'MainCtrl'
     })
     .when('/auctions',
