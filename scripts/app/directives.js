@@ -98,10 +98,10 @@ app.filter('capitalize', function () {
     }
 });
 
-app.directive('auctionsNav', function () {
+app.directive('itemsNav', function () {
     return {
         restrict: 'E',
-        templateUrl: 'templates/auctions-nav.html',
+        templateUrl: 'templates/items-nav.html',
         controller: 'MainCtrl'
     };
 });

@@ -36,7 +36,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li ng-class="{ active: isActive('/home')}"><a ng-href="#home"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-                    <li ng-class="{ active: isActive('/itemslist') || isActive('/itemscard') }"><a ng-href="#itemscard"><span class="glyphicon glyphicon-th-large"></span> Auctions</a></li>
+                    <li ng-class="{ active: isActive('/itemslist') || isActive('/itemscard') }"><a ng-href="#itemslist"><span class="glyphicon glyphicon-th-large"></span> Auctions</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right" style="padding-right:15px;">
                     <li ng-show="user.email == 'admin@auctions.ie'" ng-class="{ active: isActive('/dashboard') || isActive('/log') }">
