@@ -151,7 +151,7 @@ app.controller('AuctionCtrl', ['$scope', '$routeParams', '$http', 'FireBaseServi
     $scope.auctions = FireBaseService.auctions;
 
     $scope.placeBid = function () {
-        $http.get('http://127.0.0.1:8080/placebidservice/web/services/placebid/1/' + $rootScope.user.email).
+        $http.get('http://localhost:8080/placebidservice/bidder/services/placebid/' + $scope.auction._id + '/' + $rootScope.user.email).
             success(function () {
                 alert("Bid has been placed!");
             }).error(function () {
