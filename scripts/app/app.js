@@ -160,7 +160,6 @@ app.controller('AuctionCtrl', ['$scope', '$routeParams', '$http', 'FireBaseServi
     }
 
     if ($routeParams.auctionid != null) {
-        alert($routeParams.auctionid);
         $scope.auction = $firebase(new Firebase(FIREBASE_DB + "auctions/" + $routeParams.auctionid));
     };
 }]);
