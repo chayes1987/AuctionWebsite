@@ -147,7 +147,7 @@ app.controller('LogoutCtrl', ['$firebaseSimpleLogin', 'FIREBASE_DB', '$rootScope
     window.location.href = '#home';
 }]);
 
-app.controller('AuctionCtrl', ['$scope', '$location', '$routeParams', '$http', 'FireBaseService', function ($scope, $location, $routeParams, $http, FireBaseService) {
+app.controller('AuctionCtrl', ['$scope', '$routeParams', '$http', 'FireBaseService', 'FIREBASE_DB', '$firebase', function ($scope, $routeParams, $http, FireBaseService, FIREBASE_DB, $firebase) {
     $scope.auctions = FireBaseService.auctions;
 
     $scope.placeBid = function () {
@@ -160,11 +160,7 @@ app.controller('AuctionCtrl', ['$scope', '$location', '$routeParams', '$http', '
     }
 
     if ($routeParams.auctionid != null) {
-        $scope.auction = {};
-        angular.forEach($scope.auctions, function (value, index) {
-            if (value.$id == $routeParams.auctionid) {
-                $scope.auction = value;
-            }
-        });
+        alert($routeParams.auctionid);
+        $scope.auction = $firebase(new Firebase(FIREBASE_DB + "auctions/" + $routeParams.auctionid));
     };
 }]);
