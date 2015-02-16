@@ -8,7 +8,7 @@
 ]);
 
 app.constant('FIREBASE_DB', 'https://auctionapp.firebaseio.com/');
-app.constant('WEB_SERVICE_URL', 'http://127.0.0.1:8080/placebidservice/bidder/services/placebid/');
+app.constant('WEB_SERVICE_URL', 'http://54.171.120.118:8080/placebidservice/bidder/services/placebid/');
 
 app.config(function ($routeProvider) {
     $routeProvider
