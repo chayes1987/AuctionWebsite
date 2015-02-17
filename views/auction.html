@@ -13,7 +13,7 @@
                 <a href="#" class="list-group-item">Status: {{auction.status}}</a>
                 <a href="#" ng-show="auction.winner !== ''" class="list-group-item">Winner: {{auction.winner}}</a>
             </div>
-            <button ng-enabled="auction.status == 'Running'" ng-click="placebid()" type="button" class="btn btn btn-primary"><i class="fa fa-money"></i> Place Bid</button>
+            <button ng-enabled="auction.status == 'Running'" ng-click="placeBid()" type="button" class="btn btn btn-primary"><i class="fa fa-money"></i> Place Bid</button>
         </div>
         <div class="col-md-9">
             <div class="thumbnail">

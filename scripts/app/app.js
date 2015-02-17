@@ -127,7 +127,12 @@ app.controller('LoginCtrl', ['$scope', '$firebaseSimpleLogin', 'FIREBASE_DB', '$
         }).then(function (user) {
             // Success
             $rootScope.user = user;
-            window.location.href = '#home';
+
+            if ($rootScope.user.email == 'admin@auctions.ie') {
+                window.location.href = '#dashboard';
+            } else {
+                window.location.href = '#auctions';
+            }
         }, function (error) {
             // Check Error Code
             if (error.code === 'INVALID_USER') {
@@ -151,14 +156,15 @@ app.controller('LogoutCtrl', ['$firebaseSimpleLogin', 'FIREBASE_DB', '$rootScope
 app.controller('AuctionCtrl', ['$scope', '$routeParams', '$http', 'FireBaseService', 'FIREBASE_DB', '$firebase', 'WEB_SERVICE_URL', '$rootScope', function ($scope, $routeParams, $http, FireBaseService, FIREBASE_DB, $firebase, WEB_SERVICE_URL, $rootScope) {
     $scope.auctions = FireBaseService.auctions;
 
-    $scope.placebid = function () {
+    $scope.placeBid = function () {
+        alert(WEB_SERVICE_URL + $scope.auction._id + '/' + $rootScope.user.email);
         $http.get(WEB_SERVICE_URL + $scope.auction._id + '/' + $rootScope.user.email).
             success(function () {
                 alert("Bid has been placed!");
             }).error(function () {
                 alert("Server not available");
             });
-    };
+    }
 
     if ($routeParams.auctionid != null) {
         $scope.auction = $firebase(new Firebase(FIREBASE_DB + "auctions/" + $routeParams.auctionid));
