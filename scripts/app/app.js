@@ -159,9 +159,9 @@ app.controller('AuctionCtrl', ['$scope', '$routeParams', '$http', 'FireBaseServi
     $scope.placeBid = function () {
         $http.get(WEB_SERVICE_URL + $scope.auction._id + '/' + $rootScope.user.email).
             success(function () {
-                alert("Bid has been placed!");
+                alert("Your bid has been placed!");
             }).error(function () {
-                alert("Server not available");
+                alert("Unable to connect to Server...");
             });
     }
 
