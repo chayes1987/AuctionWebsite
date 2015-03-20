@@ -17,7 +17,9 @@
         </ul>
     </div>
     <div class="col-lg-12">
-        <div ng-hide="dashboard.message == ''" class="alert alert-danger" role="alert">{{dashboard.message}}</div>
+        <div ng-hide="dashboard.message == ''" class="alert alert-danger" role="alert">
+            WARNING | Check the health of the following services: {{dashboard.message}}
+        </div>
         <div class="table-responsive">
             <table class="table table-bordered table-hover table-striped">
                 <tbody>
