@@ -70,6 +70,7 @@ app.factory('FireBaseService', ['$firebase', 'FIREBASE_DB', function ($firebase,
     factory.items = $firebase(new Firebase(FIREBASE_DB + "items"));
     factory.auctions = $firebase(new Firebase(FIREBASE_DB + "auctions"));
     factory.categories = $firebase(new Firebase(FIREBASE_DB + "categories"));
+    factory.dashboard = $firebase(new Firebase(FIREBASE_DB + "dashboard"));
 
     return factory;
 }]);
@@ -155,6 +156,7 @@ app.controller('LogoutCtrl', ['$firebaseSimpleLogin', 'FIREBASE_DB', '$rootScope
 
 app.controller('AuctionCtrl', ['$scope', '$routeParams', '$http', 'FireBaseService', 'FIREBASE_DB', '$firebase', 'WEB_SERVICE_URL', '$rootScope', function ($scope, $routeParams, $http, FireBaseService, FIREBASE_DB, $firebase, WEB_SERVICE_URL, $rootScope) {
     $scope.auctions = FireBaseService.auctions;
+    $scope.dashboard = FireBaseService.dashboard;
 
     $scope.placeBid = function () {
         $http.get(WEB_SERVICE_URL + $scope.auction._id + '/' + $rootScope.user.email).
