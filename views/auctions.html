@@ -1,4 +1,9 @@
-﻿<div class="container">
+﻿<!-- Author - Conor Hayes
+    Coding Standards -> http://docs.ckan.org/en/latest/contributing/html.html
+    -->
+
+<div class="container">
+    <!-- Header -->
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header light">
@@ -7,6 +12,7 @@
             </h1>
         </div>
     </div>
+    <!-- Auction navigation  -->
     <div class="col-lg-12">
         <ul class="nav nav-pills">
             <form class="navbar-form navbar-right" role="search">
@@ -17,9 +23,11 @@
         </ul>
     </div>
     <div class="col-lg-12">
+        <!-- Table listing all of the auctions in the system -->
         <div class="table-responsive">
             <table class="table table-bordered table-hover table-striped">
                 <tbody>
+                    <!-- New row in table created for each auction -->
                     <tr ng-repeat="auction in auctions | orderByPriority | filter:searchText">
                         <td>
                             <h5>Auction #{{auction._id}}</h5>

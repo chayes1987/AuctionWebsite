@@ -1,27 +1,34 @@
-﻿<!DOCTYPE html>
+﻿<!-- Author - Conor Hayes
+    Coding Standards -> http://docs.ckan.org/en/latest/contributing/html.html
+    Layout -> http://startbootstrap.com/template-overviews/heroic-features/
+    -->
+
+<!DOCTYPE html>
 <html ng-app="AuctionApp" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="shortcut icon" href="/images/logo/logo.ico">
     <title>Online Auctions</title>
-    <script src="scripts/libs/angular.js"></script>
-    <script src="scripts/libs/angular-animate.js"></script>
-    <script src="scripts/libs/angular-route.js"></script>
-    <script src="scripts/libs/firebase.js"></script>
-    <script src="scripts/libs/firebase-simple-login.js"></script>
-    <script src="scripts/libs/angularfire.js"></script>
+    <!-- All dependencies are added here -->
+    <script src="scripts/libs/angular.js"></script> <!-- https://angularjs.org/ -->
+    <script src="scripts/libs/angular-animate.js"></script> <!-- https://github.com/angular/bower-angular-animate -->
+    <script src="scripts/libs/angular-route.js"></script> <!-- https://github.com/angular/bower-angular-route -->
+    <script src="scripts/libs/firebase.js"></script> <!-- https://cdn.firebase.com/js/client/2.2.2/firebase.js -->
+    <script src="scripts/libs/firebase-simple-login.js"></script> <!-- https://github.com/firebase/firebase-simple-login -->
+    <script src="scripts/libs/angularfire.js"></script> <!-- https://cdn.firebase.com/libs/angularfire/1.0.0/angularfire.js -->
     <script src="scripts/app/directives.js"></script>
     <script src="scripts/app/app.js"></script>
-    <script src="scripts/libs/jquery-2.1.1.js"></script>
-    <script src="scripts/libs/angular-ui-bootstrap.js"></script>
-    <script src="scripts/libs/bootstrap.js"></script>
-    <script src="scripts/libs/pagination.js"></script>
-    <link href="css/animations.css" rel="stylesheet" />
-    <link href="css/bootstrap-theme.css" rel="stylesheet" />
-    <link href="css/bootstrap.css" rel="stylesheet" />
-    <link href="css/font-awesome.css" rel="stylesheet" />
+    <script src="scripts/libs/jquery-2.1.1.js"></script> <!-- https://jquery.com/download/ -->
+    <script src="scripts/libs/angular-ui-bootstrap.js"></script> <!-- https://angular-ui.github.io/bootstrap/ -->
+    <script src="scripts/libs/bootstrap.js"></script> <!-- http://getbootstrap.com/ -->
+    <script src="scripts/libs/pagination.js"></script> <!-- http://www.michaelbromley.co.uk/blog/108/paginate-almost-anything-in-angularjs -->
+    <link href="css/animations.css" rel="stylesheet" /> <!-- http://weblogs.asp.net/dwahlin/angularjs-animations-in-version-1-2 -->
+    <link href="css/bootstrap-theme.css" rel="stylesheet" /> <!-- http://getbootstrap.com/ -->
+    <link href="css/bootstrap.css" rel="stylesheet" /> <!-- http://getbootstrap.com/ -->
+    <link href="css/font-awesome.css" rel="stylesheet" /> <!-- http://fortawesome.github.io/Font-Awesome/ -->
     <link href="css/home.css" rel="stylesheet" />
 </head>
+<!-- Main Controller Scope -->
 <body ng-controller="MainCtrl">
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
@@ -39,6 +46,7 @@
                     <li ng-class="{ active: isActive('/home')}"><a ng-href="#home"><span class="glyphicon glyphicon-home"></span> Home</a></li>
                     <li ng-class="{ active: isActive('/itemslist') || isActive('/itemscard') }"><a ng-href="#itemslist"><span class="glyphicon glyphicon-th-large"></span> Auctions</a></li>
                 </ul>
+                <!-- Manipulate the navbar depending on if a user is logged in and if they are admin or not -->
                 <ul class="nav navbar-nav navbar-right" style="padding-right:15px;">
                     <li ng-show="user.email == 'admin@auctions.ie'" ng-class="{ active: isActive('/dashboard') || isActive('/log') }">
                         <a ng-href="#dashboard"><span class="glyphicon glyphicon-tasks"></span> Dashboard</span></a>
@@ -51,6 +59,7 @@
             </div>
         </div>
     </nav>
+    <!-- ng-view used for routing the views -->
     <div class="container" ng-view=""></div>
     <div class="container">
         <hr>
@@ -59,6 +68,7 @@
                 <div class="col-lg-11">
                     Copyright &copy; Online Auctions <script>document.write(new Date().getFullYear())</script> | <b>Tel No.</b> 066 71##### | <b>Email</b> online.dutch.auctions@gmail.com | <b>Address</b> 12 Fake Street, Fake Road, Tralee
                 </div>
+                <!-- Social media icons for aesthetics -->
                 <div class="col-lg-1">
                     <span class="fa fa-facebook fa-2x"></span>&nbsp;&nbsp;&nbsp;
                     <span class="fa fa-twitter fa-2x"></span>

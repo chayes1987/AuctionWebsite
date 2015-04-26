@@ -1,7 +1,14 @@
-﻿// Ratings -> http://g00glen00b.be/introduction-angularjs-directives/
+﻿/*
+    Author - Conor Hayes
+*/
 
+/* Create a new Angular Module and inject required dependencies */
 var app = angular.module('directives', []);
 
+/*
+    Directive to tell the controller that the data has been loaded - used for loading spinner
+    http://stackoverflow.com/questions/15207788/calling-a-function-when-ng-repeat-has-finished
+*/
 app.directive('itemsLoaded', function () {
     return function (scope, element, attrs) {
         if (scope.$last) {
@@ -10,6 +17,10 @@ app.directive('itemsLoaded', function () {
     };
 });
 
+/*
+    Directive to show the average star rating of a given seller based on a cumulation of all their ratings
+    http://g00glen00b.be/introduction-angularjs-directives/
+*/
 app.directive('sellerAvgRating', function () {
     return {
         restrict: 'E',
@@ -56,6 +67,10 @@ app.directive('sellerAvgRating', function () {
     };
 });
 
+/*
+    Directive to show the star rating of a given seller based on individual reviews
+    http://g00glen00b.be/introduction-angularjs-directives/
+*/
 app.directive('sellerRating', function () {
     return {
         restrict: 'E',
@@ -92,6 +107,10 @@ app.directive('sellerRating', function () {
     };
 });
 
+/*
+    A filter to set the first letter of the given input to uppercase
+    Used in the specifications of an item as Firebase stores them as lowercase
+*/
 app.filter('capitalize', function () {
     return function (input, scope) {
         if (input != null)
@@ -100,6 +119,7 @@ app.filter('capitalize', function () {
     }
 });
 
+/* Directive for the extra navigation controls required for the auctions, search filter etc. */
 app.directive('itemsNav', function () {
     return {
         restrict: 'E',
@@ -108,6 +128,7 @@ app.directive('itemsNav', function () {
     };
 });
 
+/* Directive for the pagination controls uses on the auctions view */
 app.directive('paginationControls', function () {
     return {
         restrict: 'E',

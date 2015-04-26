@@ -1,16 +1,22 @@
-﻿<!-- Layout -> http://startbootstrap.com/template-overviews/shop-item/ -->
+﻿<!-- Author - Conor Hayes
+    Coding Standards -> http://docs.ckan.org/en/latest/contributing/html.html
+    Layout -> http://startbootstrap.com/template-overviews/shop-item/
+    -->
 
 <div class="container">
     <div class="row">
+        <!-- Display the specifications of the item -->
         <div class="col-md-3">
             <p class="lead"><i class="fa fa-list-ul"></i> Specs</p>
             <div class="list-group">
+                <!-- Works like a nested for-loop, ng-repeat within an ng-repeat, capitialize directive used -->
                 <a href="#" ng-repeat="spec in item.item.specs" class="list-group-item">
                     <i ng-repeat="(key, value) in spec"><strong>{{key | capitalize}}</strong>: {{value}}</i>
                 </a>
             </div>
         </div>
         <div class="col-md-9">
+            <!-- Show the details of the item. Name, images, reviews etc. -->
             <div class="thumbnail">
                 <img class="img-responsive" ng-src="{{item.item.images[0]}}" alt="{{item.item.name}}">
                 <div class="caption-full">

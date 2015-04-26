@@ -1,9 +1,17 @@
-﻿<items-nav></items-nav>
+﻿<!-- Author - Conor Hayes
+    Coding Standards -> http://docs.ckan.org/en/latest/contributing/html.html
+    -->
+
+<!-- items-nav and pagination-controls located in another file in the templates folder -> Separation of Concerns -->
+<items-nav></items-nav>
 <pagination-controls></pagination-controls>
+<!-- Create the card to hold the items and ng-repeat to create all of them -->
 <div class="col-lg-12">
+    <!-- Create a table to house the items -->
     <div class="table-responsive">
         <table class="table table-bordered table-hover table-striped">
             <tbody>
+                <!-- Create a new row for each of the items, filter added for easy searching -->
                 <tr dir-paginate="item in itms = (items | orderByPriority | filter:searchText | filter:category | orderBy:'name') | itemsPerPage: pageSize" current-page="currentPage">
                     <td>
                         <a href="#/item/{{item.$id}}">
@@ -34,4 +42,5 @@
         </table>
     </div>      
 </div>
+<!-- Pagination controls are at top and at the bottom -->
 <pagination-controls></pagination-controls>

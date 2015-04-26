@@ -1,12 +1,18 @@
-﻿<!-- Layout -> http://startbootstrap.com/template-overviews/shop-item/ -->
+﻿<!-- Author - Conor Hayes
+    Coding Standards -> http://docs.ckan.org/en/latest/contributing/html.html
+    Layout -> http://startbootstrap.com/template-overviews/shop-item/ 
+    -->
 
 <br />
+<!-- Show when there is no auction -->
 <div style="text-align:center;" ng-show="auction.name === undefined">
     <i class="fa fa-exclamation-triangle fa-5x"></i><br />
     <h3>No auctions are running at this time...</h3>
 </div>
+<!-- Show when there is an auction -->
 <div class="container" ng-hide="auction.name === undefined">
     <div class="row">
+        <!-- Contains the auction details, fields such as status and winner are updated automatically -->
         <div class="col-md-3">
             <p class="lead"><i class="fa fa-list-ul"></i> Details</p>
             <div class="list-group">
@@ -15,6 +21,7 @@
                 <a href="#" class="list-group-item">Status: {{auction.status}}</a>
                 <a href="#" ng-show="auction.winner !== ''" class="list-group-item">Winner: {{auction.winner}}</a>
             </div>
+            <!-- Place bid button only shown when auction is running, calls placeBid() function for RESTful Web Service consumption -->
             <button ng-show="auction.status == 'Running'" ng-click="placeBid()" type="button" class="btn btn btn-primary"><i class="fa fa-money"></i> Place Bid</button>
         </div>
         <div class="col-md-9">

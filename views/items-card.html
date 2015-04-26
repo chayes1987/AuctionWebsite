@@ -1,5 +1,11 @@
-﻿<items-nav></items-nav>
+﻿<!-- Author - Conor Hayes
+    Coding Standards -> http://docs.ckan.org/en/latest/contributing/html.html
+    -->
+
+<!-- items-nav and pagination-controls located in another file in the templates folder -> Separation of Concerns -->
+<items-nav></items-nav>
 <pagination-controls></pagination-controls>
+<!-- Create the card to hold the items and ng-repeat to create all of them, filter added for easy searching -->
 <div class="row">
     <div class="col-sm-4 col-lg-4 col-md-4 repeat-animation" dir-paginate="item in itms = (items | orderByPriority | filter:searchText | filter:category | orderBy:'name') | itemsPerPage: pageSize" current-page="currentPage">
         <div class="thumbnail shadow">
@@ -15,6 +21,7 @@
                     <button type="button" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-search"></span> View</button>
                 </a>
             </div>
+            <!-- Rating directive seen here -->
             <div class="ratings">
                 <p class="pull-right">{{item.seller.reviews.length}} reviews</p>
                 <seller-avg-rating max="5" reviews="item.seller.reviews"></seller-avg-rating>
@@ -22,4 +29,5 @@
         </div>
     </div>
 </div>
+<!-- Pagination controls are at top and at the bottom -->
 <pagination-controls></pagination-controls>

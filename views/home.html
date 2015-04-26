@@ -1,4 +1,7 @@
-﻿<!-- Layout -> http://startbootstrap.com/template-overviews/heroic-features/ -->
+﻿<!-- Author - Conor Hayes
+    Coding Standards -> http://docs.ckan.org/en/latest/contributing/html.html
+    Layout -> http://startbootstrap.com/template-overviews/heroic-features/
+    -->
 
 <div class="container">
     <header class="jumbotron shadow">
@@ -12,7 +15,9 @@
             <h2 class="page-header light"><span class="fa fa-th"></span> Featured Auctions</h2>
         </div>
     </div>
+    <!-- Loading spinner -->
     <div style="text-align:center;font-size:2em;" ng-show="loading"><i class="fa fa-circle-o-notch fa-spin fa-2x"></i></div>
+    <!-- Show four items as featured auction items -->
     <div class="row">
         <div class="col-md-3 col-sm-6 hero-feature repeat-animation" ng-repeat="item in items | orderByPriority | orderBy:'name'" items-loaded>
             <div class="thumbnail shadow">
@@ -28,8 +33,10 @@
                         <button type="button" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-search"></span> View</button>
                     </a>
                 </div>
+                <!-- Shows the average rating for the seller -->
                 <div class="ratings">
                     <p class="pull-right">{{item.seller.reviews.length}} reviews</p>
+                    <!-- This uses the a user-defined directive -->
                     <seller-avg-rating max="5" reviews="item.seller.reviews"></seller-avg-rating>
                 </div>
             </div>
