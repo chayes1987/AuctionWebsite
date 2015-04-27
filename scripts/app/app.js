@@ -178,7 +178,7 @@ app.controller('AuctionCtrl', ['$scope', '$routeParams', '$http', 'FireBaseServi
     $scope.auctions = FireBaseService.auctions;
     $scope.dashboard = FireBaseService.dashboard;
 
-    /* Place Bud Function - called to place a bid */
+    /* Place Bid Function - called to place a bid */
     $scope.placeBid = function () {
         /* Send HTTP GET to the RESTful Web Service and show the response in a message */
         $http.get(WEB_SERVICE_URL + $scope.auction._id + '/' + $rootScope.user.email).
