@@ -2,7 +2,7 @@
     Author - Conor Hayes
 */
 
-/* Create a new Angular Module and inject required dependencies */
+/* Create a new Angular Module */
 var app = angular.module('directives', []);
 
 /*
